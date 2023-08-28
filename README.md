@@ -6,3 +6,4 @@ if forbidden
     headers = headers is true
 https://www.youtube.com/watch?v=gRLHr664tXA&ab_channel=TechWithTim
 https://stackoverflow.com/questions/57155387/workaround-for-blocked-get-requests-in-python
+https://requests.readthedocs.io/en/latest/
