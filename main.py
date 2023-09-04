@@ -8,17 +8,32 @@ result = requests.get(url, headers=headers)
 soup = BeautifulSoup(result.text, "html.parser")
 #print(soup)
 
+# create a new file
 try:
-    nostock = soup.find('p', class_ = 'stock out-of-stock').text
-    print(nostock)
+    newfile = open("result.txt", "x")
 except:
-    print("In stock.")
+    print("File exists.")
+
+# parse soup and write result to file
+newfile = open("result.txt", "w")
 
 try:
-    cart = soup.find('button', class_='single_add_to_cart_button button alt').text
-    print(cart)
+    nostock = soup.find('p', class_ = 'stock out-of-stock').text
+    newfile.write(nostock)
+    newfile.write("\n")
 except:
-    print("Out of stock.")
+    newfile.write("In stock.")
+    newfile.write("\n")
+try:
+    cart = soup.find('button', class_='single_add_to_cart_button button alt').text
+    newfile.write(cart)
+except:
+    newfile.write("Out of stock.")
+newfile.close()
+
+newfile = open("result.txt", "r")
+print(newfile.read())
+newfile.close()
 
 
 
